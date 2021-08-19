@@ -34,7 +34,7 @@ ARG PG_DRIVER_URL=https://jdbc.postgresql.org/download/postgresql-42.2.19.jar
 ARG MYSQL_DRIVER_URL=https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.23/mysql-connector-java-8.0.23.jar
 ARG ORACLE_DRIVER_URL=https://repo1.maven.org/maven2/com/oracle/database/jdbc/ojdbc8/21.1.0.0/ojdbc8-21.1.0.0.jar
 ARG MSSQL_DRIVER_URL=https://github.com/microsoft/mssql-jdbc/releases/download/v9.4.0/mssql-jdbc-9.4.0.jre8.jar
-ARG NIFI_COMPOSE_BUNDLE_URL=https://github.com/yichun-aot/nifi-mongo-plugin/blob/master/nifi-compose-nar-1.9.2.nar
+# ARG NIFI_COMPOSE_BUNDLE_URL=https://github.com/yichun-aot/nifi-mongo-plugin/blob/master/nifi-compose-nar-1.9.2.nar
 
 ENV NIFI_BASE_DIR=/opt/nifi
 ENV NIFI_HOME ${NIFI_BASE_DIR}/nifi-current
@@ -84,8 +84,8 @@ RUN curl -fSL ${MIRROR_BASE_URL}/${NIFI_BINARY_PATH} -o ${NIFI_BASE_DIR}/nifi-${
 RUN curl -fSL ${PG_DRIVER_URL} -o ${NIFI_LIB_DIR}/pg-jdbc.jar \
     && curl -fSL ${MYSQL_DRIVER_URL} -o ${NIFI_LIB_DIR}/mysql-connector.jar \
     && curl -fSL ${ORACLE_DRIVER_URL} -o ${NIFI_LIB_DIR}/oracle-jdbc.jar \
-    && curl -fSL ${MSSQL_DRIVER_URL} -o ${NIFI_LIB_DIR}/mssql-jdbc.jar \
-    && curl -fSL ${NIFI_COMPOSE_BUNDLE_URL} -o ${NIFI_LIB_DIR}/nifi-compose.nar
+    && curl -fSL ${MSSQL_DRIVER_URL} -o ${NIFI_LIB_DIR}/mssql-jdbc.jar 
+#    && curl -fSL ${NIFI_COMPOSE_BUNDLE_URL} -o ${NIFI_LIB_DIR}/nifi-compose.nar
     
 VOLUME ${NIFI_LOG_DIR} \
        ${NIFI_HOME}/conf \
