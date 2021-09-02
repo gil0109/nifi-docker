@@ -98,7 +98,7 @@ RUN echo "#!/bin/sh\n" > $NIFI_HOME/bin/nifi-env.sh
 
 # Fix Permisions
 RUN chmod +rw ${NIFI_HOME}/conf/nifi.properties
-RUN chmod 755 ${NIFI_HOME}/conf
+RUN chmod ugo+rwx ${NIFI_HOME}/conf
 
 # Web HTTP(s) & Socket Site-to-Site Ports
 EXPOSE 8080 8443 10000 8000
